@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+</head>
+<body>
+    <h1>Question {{ session.current_question + 1 }} of {{ session.questions|length }}</h1>
+    <h2>{{ question['question'] }}</h2>
+
+    {% if feedback %}
+        <p><strong>{{ feedback }}</strong></p>
+    {% endif %}
+
+    <form method="POST">
+        <input type="text" name="answer" placeholder="Your answer here..." required>
+        <button type="submit">Submit</button>
+    </form>
+
+    <br>
+    <form method="POST">
+        <input type="hidden" name="answer" value="quit">
+        <button type="submit">Quit</button>
+    </form>
+</body>
+</html>
